@@ -26,10 +26,18 @@
       justify-content: center;
       padding: 48px;
       -webkit-font-smoothing: antialiased;
-      color: #fff;
-      
       min-height: 100vh;
       overflow-y: auto;
+      position: relative;
+    }
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
     .card{
       width:100%; max-width:420px; border-radius:18px; padding:28px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
@@ -46,7 +54,7 @@
     }
     .avatar img{width:100%; height:100%; object-fit:cover; display:block}
     h1{margin:8px 0 4px; font-size:20px; letter-spacing:0.2px}
-    p.bio{margin:0 0 18px; color:var(--muted); font-size:14px}
+    p.bio{margin:0 0 18px; font-size:14px}
 
     .links{display:flex; flex-direction:column; gap:12px}
     .link-btn{
@@ -72,34 +80,35 @@
 
     .footer{margin-top:18px; font-size:13px; color:var(--muted)}
 
+    h1, p, .link-text, .footer {
+      color: #fff;
+      text-shadow:
+        -0.75px -0.75px 0 #000, /* arriba izquierda */
+        0.75px -0.75px 0 #000, /* arriba derecha */
+        -0.75px  0.75px 0 #000, /* abajo izquierda */
+        0.75px  0.75px 0 #000; /* abajo derecha */
+    }
+
     /* responsive */
     @media (max-width:480px){ body{padding:24px} .card{padding:20px} }
   </style>
 </head>
 <body>
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="bg-video.mp4" type="video/mp4">
+  </video>
+
   <main class="card">
     <div class="avatar">
-      <!-- Reemplaza src con tu avatar o deja el div con iniciales -->
       <img src="free-link-tree-profile.jpeg" alt="avatar">
     </div>
     <h1>Gabs.Mobdev</h1>
     <p class="bio">Multiplatform Mobile Developer | Kotlin Main | Jetpack Compose desde la Beta | Pythonero a tiempo parcial.
-      <br>
-      <br>
+      <br><br>
       Todos los links a mis <strong>Redes Sociales</strong> o <strong>Eventos</strong> proximos aquí :D.
     </p>
 
     <nav class="links" aria-label="Enlaces principales">
-      <!-- ================================ -->
-      <!-- AÑADE/TUITEA TUS LINKS AQUÍ: copia y pega una línea por cada red social -->
-      <!-- Ejemplo: <a class="link-btn" href="https://twitter.com/tu_usuario" target="_blank" rel="noopener">
-            <span class="link-icon">[svg]</span>
-            <span class="link-text">Twitter <div class="small">@tu_usuario</div></span>
-          </a>
-      -->
-
-      <!-- START: Links por defecto (borra o modifica) -->
-
       <a class="link-btn" href="https://app.hi.events/event/1752/mdcfirst14-int-august-stringjoinus" target="_blank" rel="noopener">
         <span class="link-icon" aria-hidden>
           <img src="mdc_logo.png" alt="mdc">
@@ -141,13 +150,9 @@
         </span>
         <span class="link-text">Facebook</span>
       </a>
-      <!-- END: Links por defecto -->
-
     </nav>
 
     <div class="footer">✨ Hecho por <strong>gabriel96x1</strong> — copia este archivo a tu repo y personalízalo sin pagar. Solo dame creditos si quieres. Bye.</div>
   </main>
-
-  <!-- No dependencias, sólo edita los enlaces en el <nav class="links"> -->
 </body>
 </html>
